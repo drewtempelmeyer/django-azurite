@@ -1,4 +1,4 @@
-django-azure
+django-azurite
 ============
 
 Azure file storage for Django
