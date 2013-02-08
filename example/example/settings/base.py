@@ -67,9 +67,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    root('static-files'),
 )
 
 # List of finder classes that know how to find static files in
@@ -121,12 +119,12 @@ DEFAULT_FILE_STORAGE = 'azurite.storage.AzureStorage'
 
 # Default azurite settings
 AZURITE = {
-    'account_name': None,
-    'container': None,
-    'static_container': None,
-    'account_key': None,
-    'cdn_host': None,
-    'use_ssl': False,
+    'ACCOUNT_NAME': None,
+    'ACCOUNT_KEY': None,
+    'CONTAINER': None,
+    'STATIC_CONTAINER': None,
+    'CDN_HOST': None,
+    'USE_SSL': False,
 }
 
 try:

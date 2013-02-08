@@ -39,3 +39,4 @@ docs/_build
 venv
 .tox
 example/example/settings/local_settings.py
+example/static/

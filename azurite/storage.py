@@ -12,11 +12,11 @@ class AzureStorage(Storage):
     """
     Custom file storage system for Azure
     """
-    container = AZURITE['container']
-    account_name = AZURITE['account_name']
-    account_key = AZURITE['account_key']
-    cdn_host = AZURITE['cdn_host']
-    use_ssl = AZURITE['use_ssl']
+    container = AZURITE['CONTAINER']
+    account_name = AZURITE['ACCOUNT_NAME']
+    account_key = AZURITE['ACCOUNT_KEY']
+    cdn_host = AZURITE['CDN_HOST']
+    use_ssl = AZURITE['USE_SSL']
 
     def __init__(self, account_name=None, account_key=None, use_ssl=None):
         if account_name is not None:
@@ -151,3 +151,16 @@ class AzureStorage(Storage):
                 '%a, %d %b %Y %H:%M:%S %Z')
         except WindowsAzureMissingResourceError:
             pass
+
+
+class AzureStaticStorage(AzureStorage):
+    """
+    Subclasses AzureStorage to automatically set the container to the one
+    specified in AZURITE['STATIC_CONTAINER']. This provides the ability to
+    specify a separate storage backend for Django's collectstatic command.
+
+    To use, make sure AZURITE['STATIC_CONTAINER'] is set to something other
+    than AZURITE['CONTAINER']. Then, tell Django's staticfiles app by setting
+    STATICFILES_STORAGE = 'cumulus.storage.AzureStaticStorage'.
+    """
+    container_name = AZURITE['STATIC_CONTAINER']

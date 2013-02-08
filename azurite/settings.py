@@ -1,12 +1,12 @@
 from django.conf import settings
 
 AZURITE = {
-    'account_name': None,
-    'container': None,
-    'static_container': None,
-    'account_key': None,
-    'cdn_host': None,
-    'use_ssl': False,
+    'ACCOUNT_NAME': None,
+    'ACCOUNT_KEY': None,
+    'CONTAINER': None,
+    'STATIC_CONTAINER': None,
+    'CDN_HOST': None,
+    'USE_SSL': False,
 }
 
 if hasattr(settings, 'AZURITE'):
