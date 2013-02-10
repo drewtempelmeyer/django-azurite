@@ -1,4 +1,5 @@
 import datetime
+import mimetypes
 import optparse
 import os
 
@@ -128,8 +129,10 @@ class Command(BaseCommand):
 
             if not self.test_run:
                 file_contents = open(file_path, 'r').read()
+                content_type, encoding = mimetypes.guess_type(file_path)
                 self.service.put_blob(self.STATIC_CONTAINER, object_name, file_contents,
-                    x_ms_blob_type='BlockBlob')
+                    x_ms_blob_type='BlockBlob', x_ms_blob_content_type=content_type,
+                    content_encoding=encoding)
                 # sync_headers(cloud_obj)
             self.upload_count += 1
             if self.verbosity > 1:
