@@ -161,6 +161,6 @@ class AzureStaticStorage(AzureStorage):
 
     To use, make sure AZURITE['STATIC_CONTAINER'] is set to something other
     than AZURITE['CONTAINER']. Then, tell Django's staticfiles app by setting
-    STATICFILES_STORAGE = 'cumulus.storage.AzureStaticStorage'.
+    STATICFILES_STORAGE = 'azurite.storage.AzureStaticStorage'.
     """
-    container_name = AZURITE['STATIC_CONTAINER']
+    container = AZURITE['STATIC_CONTAINER']
