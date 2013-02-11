@@ -34,7 +34,9 @@ class AzureStorage(Storage):
             cdn_host=self.cdn_host, use_ssl=self.use_ssl)
 
     def _get_protocol(self):
-        return 'https' if self.use_ssl else 'http'
+        if self.use_ssl:
+            return 'https'
+        return 'http'
 
     def _get_service(self):
         if not hasattr(self, '_blob_service'):
