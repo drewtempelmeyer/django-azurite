@@ -83,7 +83,7 @@ class AzureStorage(Storage):
         if hasattr(content.file, 'content_type'):
             content_type = content.file.content_type
         else:
-            content_type, _ = mimetypes.guess_type(file_path)
+            content_type, _ = mimetypes.guess_type(name)
 
         if hasattr(content, 'chunks'):
             content_str = ''.join(chunk for chunk in content.chunks())
