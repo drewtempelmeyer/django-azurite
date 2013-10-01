@@ -1,4 +1,5 @@
 import datetime
+import mimetypes
 
 from azure import WindowsAzureMissingResourceError
 from azure.storage import BlobService
@@ -81,6 +82,8 @@ class AzureStorage(Storage):
         content_type = None
         if hasattr(content.file, 'content_type'):
             content_type = content.file.content_type
+        else:
+            content_type, _ = mimetypes.guess_type(name)
 
         if hasattr(content, 'chunks'):
             content_str = ''.join(chunk for chunk in content.chunks())
